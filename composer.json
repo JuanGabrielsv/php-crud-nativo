@@ -1,6 +1,6 @@
 {
     "name": "abims/primero",
-    "description": "Proyecto base con estructura organizada en PHP.",
+    "description": "Proyecto Primero",
     "require": {
         "php": "^8.0"
     },

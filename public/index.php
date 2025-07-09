@@ -2,8 +2,8 @@
 // Autoload generado por Composer
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Controladores\HomeController;
+use App\Controllers\HomeController;
 
-// Instancia el controlador principal y ejecuta método index
+// Instancia el controlador principal y ejecuta metodo index
 $controlador = new HomeController();
 $controlador->index();
