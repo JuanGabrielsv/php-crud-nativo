@@ -2,7 +2,8 @@
     "name": "abims/primero",
     "description": "Proyecto Primero",
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "monolog/monolog": "^3.9"
     },
     "autoload": {
         "psr-4": {
