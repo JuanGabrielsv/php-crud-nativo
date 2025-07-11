@@ -3,7 +3,8 @@
     "description": "Proyecto Primero",
     "require": {
         "php": "^8.0",
-        "monolog/monolog": "^3.9"
+        "monolog/monolog": "^3.9",
+        "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
