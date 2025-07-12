@@ -13,14 +13,14 @@ class UserController
         $this->userModel = new User();
     }
 
-    public function index(): void
+    public function getAll(): void
     {
         $usuarios = $this->userModel->getAll();
         header('Content-Type: application/json');
         echo json_encode($usuarios);
     }
 
-    public function show(int $id): void
+    public function getAllById(int $id): void
     {
         $usuario = $this->userModel->getById($id);
         header('Content-Type: application/json');

@@ -23,11 +23,11 @@ if ($uri === '/' || $uri === '/home') {
 
 } elseif ($uri === '/usuarios' && $method === 'GET') {
     $controlador = new UserController();
-    $controlador->index();
+    $controlador->getAll();
 
 } elseif (preg_match('#^/usuarios/(\d+)$#', $uri, $matches) && $method === 'GET') {
     $controlador = new UserController();
-    $controlador->show((int) $matches[1]);
+    $controlador->getAllById((int) $matches[1]);
 
 } else {
     http_response_code(404);
