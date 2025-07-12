@@ -15,7 +15,7 @@ class Connection
         $pass = "root";
         $charset = "utf8mb4";
 
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+        $dsn = "mysql:host=$host;port=3308;dbname=$dbname;charset=$charset";
 
         try {
             return new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
