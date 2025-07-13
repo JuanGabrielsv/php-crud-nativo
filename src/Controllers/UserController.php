@@ -53,7 +53,11 @@ class UserController
             }
         }
 
-        if ($userData['pagado']) {}
+        if (!in_array($userData['pagado'], [true, false, 0, 1], true)) {
+            http_response_code(400);
+            echo json_encode(['error' => "El campo `pagado` solo puede ser true, false, 1 o 0"]);
+            return;
+        }
 
         // Asignamos la fecha actual a fecha registro
         $fechaRegistro = date('Y-m-d H:i:s');
