@@ -33,8 +33,10 @@ if ($uri === '/' || $uri === '/home') {
     $controlador = new UserController();
     $controlador->create();
 
+} elseif ($uri === '/usuarios' && $method === 'PUT') {
+
 } else {
     http_response_code(404);
     header('Content-Type: application/json');
-    echo json_encode(['error' => 'Ruta no válida']);
+    echo json_encode(['error' => 'Ruta no válida'], JSON_UNESCAPED_UNICODE);
 }

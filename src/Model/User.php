@@ -35,7 +35,7 @@ class User
         string  $primer_apellido,
         string  $segundo_apellido,
         int     $edad,
-        ?string $telefono,
+        string $telefono,
         string  $fechaRegistro,
         string  $email,
         bool    $pagado
@@ -59,7 +59,7 @@ class User
                 'email' => $email,
                 'pagado' => $pagado ? 1 : 0
             ]);
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             // Para debug: mostramos el error en la respuesta
             header('Content-Type: application/json');
             http_response_code(500);

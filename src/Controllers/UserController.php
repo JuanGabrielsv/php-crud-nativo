@@ -52,10 +52,16 @@ class UserController
                 }
             }
         }
-
+        // Atributo pagado debe ser true, false, 0 o 1
         if (!in_array($userData['pagado'], [true, false, 0, 1], true)) {
             http_response_code(400);
             echo json_encode(['error' => "El campo `pagado` solo puede ser true, false, 1 o 0"]);
+            return;
+        }
+        // Filtramos que el email sea correcto
+        if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'El formato del email no es válido']);
             return;
         }
 
