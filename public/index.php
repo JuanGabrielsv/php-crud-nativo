@@ -27,13 +27,15 @@ if ($uri === '/' || $uri === '/home') {
 
 } elseif (preg_match('#^/usuarios/(\d+)$#', $uri, $matches) && $method === 'GET') {
     $controlador = new UserController();
-    $controlador->getAllById((int)$matches[1]);
+    $controlador->getById((int)$matches[1]);
 
 } elseif ($uri === '/usuarios' && $method === 'POST') {
     $controlador = new UserController();
     $controlador->create();
 
 } elseif ($uri === '/usuarios' && $method === 'PUT') {
+    $controlador = new UserController();
+    $controlador->put();
 
 } else {
     http_response_code(404);

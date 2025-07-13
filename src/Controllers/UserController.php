@@ -20,7 +20,7 @@ class UserController
         echo json_encode($usuarios);
     }
 
-    public function getAllById(int $id): void
+    public function getById(int $id): void
     {
         $usuario = $this->userModel->getById($id);
         header('Content-Type: application/json');
@@ -64,6 +64,66 @@ class UserController
             echo json_encode(['error' => 'El formato del email no es válido']);
             return;
         }
+
+        // Asignamos la fecha actual a fecha registro
+        $fechaRegistro = date('Y-m-d H:i:s');
+
+        $user = new User();
+        $result = $user->create(
+            $userData['nombre'],
+            $userData['primer_apellido'],
+            $userData['segundo_apellido'],
+            $userData['edad'],
+            $userData['telefono'],
+            $fechaRegistro,
+            $userData['email'],
+            $userData['pagado']
+        );
+
+        if ($result) {
+            http_response_code(201);
+            echo json_encode(['success' => 'Usuario creado']);
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Error al crear el usuario']);
+        }
+    }
+
+    public function put(): void
+    {
+        $userData = json_decode(file_get_contents('php://input'), true);
+        $requiredFields = ['id', 'nombre', 'primer_apellido', 'segundo_apellido', 'edad', 'telefono', 'email', 'pagado'];
+
+        foreach ($requiredFields as $field) {
+            if (!array_key_exists($field, $userData)) {
+                http_response_code(400);
+                echo json_encode(['error' => "El campo `$field` es obligatorio"]);
+                return;
+            }
+            if ($field !== 'pagado') {
+                if (empty($userData[$field])) {
+                    http_response_code(400);
+                    echo json_encode(['error' => "El campo `$field` no puede estar vacío", JSON_UNESCAPED_UNICODE]);
+                    return;
+                }
+            }
+        }
+
+        if (!in_array($userData['pagado'], [true, false, 0, 1], true)) {
+            http_response_code(400);
+            echo json_encode(['error' => "El campo `pagado` solo puede ser true, false, 1 o 0"]);
+            return;
+        }
+
+        // Filtramos que el email sea correcto
+        if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'El formato del email no es válido']);
+            return;
+        }
+
+        // Comprobamos que usuario exista
+        
 
         // Asignamos la fecha actual a fecha registro
         $fechaRegistro = date('Y-m-d H:i:s');
