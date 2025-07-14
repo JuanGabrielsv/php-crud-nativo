@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d13f93e0-31f0-4100-ad5b-10dc5051b7fb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/Primero.test-access.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/Primero.test-access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/Primero.test-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/Primero.test-error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,7 @@
       <workItem from="1752407457349" duration="1536000" />
       <workItem from="1752409015914" duration="5895000" />
       <workItem from="1752428576900" duration="759000" />
-      <workItem from="1752445530677" duration="1062000" />
+      <workItem from="1752445530677" duration="5851000" />
     </task>
     <servers />
   </component>
