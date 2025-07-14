@@ -27,14 +27,22 @@ if ($uri === '/' || $uri === '/home') {
 
 } elseif (preg_match('#^/usuarios/(\d+)$#', $uri, $matches) && $method === 'GET') {
     $controlador = new UserController();
-    $controlador->getAllById((int)$matches[1]);
+    $controlador->getById((int)$matches[1]);
 
 } elseif ($uri === '/usuarios' && $method === 'POST') {
     $controlador = new UserController();
     $controlador->create();
 
-} else {
+} elseif ($uri === '/usuarios' && $method === 'PUT') {
+    $controlador = new UserController();
+    $controlador->put();
+
+} elseif ($uri === '/usuarios' && $method === 'PATCH') {
+    $controlador = new UserController();
+    $controlador->patch();
+}
+else {
     http_response_code(404);
     header('Content-Type: application/json');
-    echo json_encode(['error' => 'Ruta no válida']);
+    echo json_encode(['error' => 'Ruta no válida'], JSON_UNESCAPED_UNICODE);
 }
