@@ -7,7 +7,6 @@
     <list default="true" id="d13f93e0-31f0-4100-ad5b-10dc5051b7fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/Primero.test-access.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/Primero.test-access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/Primero.test-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/Primero.test-error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
@@ -53,7 +52,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/Actualización__de__usuario__update()&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Abims/Documents/Desarrollo/Repositorios/crud-php&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -99,6 +98,8 @@
       <workItem from="1752409015914" duration="5895000" />
       <workItem from="1752428576900" duration="759000" />
       <workItem from="1752445530677" duration="5851000" />
+      <workItem from="1752482771856" duration="2000" />
+      <workItem from="1752482780140" duration="5116000" />
     </task>
     <servers />
   </component>

@@ -40,8 +40,12 @@ if ($uri === '/' || $uri === '/home') {
 } elseif ($uri === '/usuarios' && $method === 'PATCH') {
     $controlador = new UserController();
     $controlador->patch();
-}
-else {
+
+} elseif (preg_match('#^/usuarios/delete/(\d+)$#', $uri, $matches) && $method === 'DELETE') {
+    $controlador = new UserController();
+    $controlador->deleteById((int)$matches[1]);
+
+} else {
     http_response_code(404);
     header('Content-Type: application/json');
     echo json_encode(['error' => 'Ruta no válida'], JSON_UNESCAPED_UNICODE);

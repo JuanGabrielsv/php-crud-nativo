@@ -148,4 +148,18 @@ class User
             return false;
         }
     }
+
+    public function deleteById($id): bool
+    {
+        $sql = "DELETE FROM user WHERE id = :id";
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            return $stmt->execute(['id' => $id]);
+        } catch (PDOException $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Error en base de datos: ' . $e->getMessage()]);
+            return false;
+        }
+    }
 }

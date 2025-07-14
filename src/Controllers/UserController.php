@@ -27,6 +27,7 @@ class UserController
         echo json_encode($usuario ?: ['error' => 'Usuario no encontrado']);
     }
 
+    // CREATE
     public function create(): void
     {
         // Obtener el contenido del body
@@ -47,7 +48,7 @@ class UserController
                 // Para pagado no validamos vacío porque false es válido
                 if (empty($userData[$field]) && $userData[$field] !== '0' && $userData[$field] !== 0) {
                     http_response_code(400);
-                    echo json_encode(['error' => "El campo `$field` no puede estar vacío"]);
+                    echo json_encode(['error' => "El campo `$field` no puede estar vacío"], JSON_UNESCAPED_UNICODE);
                     return;
                 }
             }
@@ -89,6 +90,7 @@ class UserController
         }
     }
 
+    // PUT
     public function put(): void
     {
         $user = new User();
@@ -104,7 +106,7 @@ class UserController
             if ($field !== 'pagado') {
                 if (empty($userData[$field])) {
                     http_response_code(400);
-                    echo json_encode(['error' => "El campo `$field` no puede estar vacío", JSON_UNESCAPED_UNICODE]);
+                    echo json_encode(['error' => "El campo `$field` no puede estar vacío"], JSON_UNESCAPED_UNICODE);
                     return;
                 }
             }
@@ -119,7 +121,7 @@ class UserController
         // Filtramos que el email sea correcto
         if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
             http_response_code(400);
-            echo json_encode(['error' => 'El formato del email no es válido']);
+            echo json_encode(['error' => 'El formato del email no es válido'], JSON_UNESCAPED_UNICODE);
             return;
         }
 
@@ -183,7 +185,7 @@ class UserController
             if (array_key_exists($campo, $userData)) {
                 if ($campo !== 'pagado' && empty($userData[$campo])) {
                     http_response_code(400);
-                    echo json_encode(['error' => "El campo `$campo` no puede estar vacío"]);
+                    echo json_encode(['error' => "El campo `$campo` no puede estar vacío"], JSON_UNESCAPED_UNICODE);
                     return;
                 }
 
@@ -205,7 +207,7 @@ class UserController
 
         if (empty($datosActualizados)) {
             http_response_code(400);
-            echo json_encode(['error' => 'No se proporcionaron campos válidos para actualizar']);
+            echo json_encode(['error' => 'No se proporcionaron campos válidos para actualizar'], JSON_UNESCAPED_UNICODE);
             return;
         }
 
@@ -220,63 +222,21 @@ class UserController
         }
     }
 
-
-    /*public function patch(): void
+    // DELETE
+    public function deleteById(int $id): void
     {
-        $userRepository = new User();
-        $userData = json_decode(file_get_contents('php://input'), true);
-        $requiredFields = ['id', 'nombre', 'primer_apellido', 'segundo_apellido', 'edad', 'telefono', 'email', 'pagado'];
+        $user = new User();
 
-        foreach ($requiredFields as $field) {
-            if (!array_key_exists($field, $userData)) {
-                http_response_code(400);
-                echo json_encode(['error' => "El campo `$field` es obligatorio"]);
-                return;
-            }
-            if ($field !== 'pagado') {
-                if (empty($userData[$field])) {
-                    http_response_code(400);
-                    echo json_encode(['error' => "El campo `$field` no puede estar vacío", JSON_UNESCAPED_UNICODE]);
-                    return;
-                }
-            }
-        }
-
-        if (!in_array($userData['pagado'], [true, false, 0, 1], true)) {
-            http_response_code(400);
-            echo json_encode(['error' => "El campo `pagado` solo puede ser true, false, 1 o 0"]);
-            return;
-        }
-
-        // Comprobamos que usuario exista
-        $userExiste = $userRepository->getById($userData['id']);
-        if (empty($userExiste)) {
+        //Comprobamos que el usuario existe
+        if (!$user->getById($id)) {
             http_response_code(400);
             echo json_encode(['error' => "El usuario no existe"]);
             return;
         }
 
-        // Asignamos la fecha actual a fecha registro
-        $fechaRegistro = date('Y-m-d H:i:s');
+        $user->deleteById($id);
 
-        $result = $userRepository->put(
-            $userData['id'],
-            $userData['nombre'],
-            $userData['primer_apellido'],
-            $userData['segundo_apellido'],
-            $userData['edad'],
-            $userData['telefono'],
-            $fechaRegistro,
-            $userData['email'],
-            $userData['pagado']
-        );
+    }
 
-        if ($result) {
-            http_response_code(201);
-            echo json_encode(['success' => 'Usuario Actualizado']);
-        } else {
-            http_response_code(500);
-            echo json_encode(['error' => 'Error al actualizar el usuario']);
-        }
-    }*/
+
 }
