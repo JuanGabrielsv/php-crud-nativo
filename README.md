@@ -1,3 +1,3 @@
 # Mi Proyecto PHP
 
-Proyecto base con estructura organizada para empezar a trabajar con PHP moderno.
+Un proyecto simple de un crud a través de métodos GET, PUT, PATCH, POST, DELETE de forma nativa, sin framework.
